@@ -1,8 +1,9 @@
-import CustomButton from 'components/custom-button/custom-button.component';
-import FormInput from 'components/form-input/form-input.component';
 import React, { useState } from 'react';
 
 import './sign-in.styles.scss';
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import { signInWithGoogle } from '../../firebase/firebase.auth';
 
 const SignIn = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -39,8 +40,12 @@ const SignIn = () => {
           name="password"
           value={formState.password}
         />
-
-        <CustomButton type="submit">Sign In</CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">Sign In</CustomButton>
+          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            Sign In With Google
+          </CustomButton>
+        </div>
       </form>
     </div>
   );
