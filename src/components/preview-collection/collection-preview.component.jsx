@@ -1,6 +1,6 @@
 import React from 'react';
+import CollectionItem from '../collection-item/collection-item.component';
 
-import CollectionItem from 'components/collection-item/collection-item.component';
 import './collection-preview.styles.scss';
 
 const CollectionPreview = ({ title, items }) => {
@@ -11,7 +11,6 @@ const CollectionPreview = ({ title, items }) => {
         {items
           .filter((item, index) => index < 4)
           .map(({ id, ...otherProps }) => (
-            // @ts-ignore
             <CollectionItem key={id} {...otherProps} />
           ))}
       </div>
