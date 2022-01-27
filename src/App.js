@@ -7,13 +7,25 @@ import ShopPage from './pages/shop/shop.component';
 import HomePage from './pages/homepage/homepage.component';
 import AuthPage from './pages/auth-page/auth-page.component';
 import { onMyAuthStateChanged } from './firebase/firebase.auth';
+import { createUserProfileDocument } from './firebase/firebase.utils';
 
 const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const authUnsubscribe = onMyAuthStateChanged(user => {
-      setUser(user);
+    const authUnsubscribe = onMyAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRefSnapshot = await createUserProfileDocument(userAuth);
+
+        userRefSnapshot(snapShot => {
+          setUser({
+            id: snapShot.id,
+            ...snapShot.data(),
+          });
+        });
+      }
+
+      setUser(userAuth);
     });
 
     return () => {
@@ -23,7 +35,7 @@ const App = () => {
 
   return (
     <div>
-      <Header currentUser={user}/>
+      <Header currentUser={user} />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/shop" component={ShopPage} />
