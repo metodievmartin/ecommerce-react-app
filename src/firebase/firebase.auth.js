@@ -4,6 +4,8 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 
 import app from './firebase.utils';
@@ -15,6 +17,8 @@ const auth = getAuth(app);
 // instance and re-export them for convenience
 export const onMyAuthStateChanged = onAuthStateChanged.bind(null, auth);
 export const authSignOut = signOut.bind(null, auth);
+export const authCreateUserWithEmailAndPassword = createUserWithEmailAndPassword.bind(null, auth);
+export const authSignInWithEmailAndPassword = signInWithEmailAndPassword.bind(null, auth);
 
 // Create an instance of the Google provider object
 // This will allow user to sign in with their Google account
