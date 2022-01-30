@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from './constants';
+import { SET_CURRENT_USER } from './user.action-types';
 
 const INITIAL_STATE = {
   currentUser: null,

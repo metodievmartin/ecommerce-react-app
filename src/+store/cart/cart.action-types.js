@@ -1,0 +1,1 @@
+export const TOGGLE_CART_DROPDOWN = '[CART] Toggle Cart Dropdown';

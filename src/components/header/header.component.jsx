@@ -2,14 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { authSignOut } from '../../firebase/firebase.auth';
 import { getCurrentUser } from '../../+store/user/user.selectors';
-import './header.styles.scss';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import { getCartDropdownIsHidden } from '../../+store/cart/cart.selectors';
 
 const Header = () => {
   const currentUser = useSelector(getCurrentUser);
-  
+  const isDropDownHidden = useSelector(getCartDropdownIsHidden);
+
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -32,7 +36,9 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {!isDropDownHidden && <CartDropdown />}
     </div>
   );
 };
