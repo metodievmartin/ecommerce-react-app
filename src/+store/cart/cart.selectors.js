@@ -1,8 +1,8 @@
-export const getCartDropdownIsHidden = state => state.cart.hidden;
+export const selectCartDropdownIsHidden = state => state.cart.hidden;
 
-export const getCartItems = state => state.cart.cartItems;
+export const selectCartItems = state => state.cart.cartItems;
 
-export const getCartItemsQuantity = state =>
+export const selectCartItemsQuantity = state =>
   state.cart.cartItems.reduce(
     (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
     0

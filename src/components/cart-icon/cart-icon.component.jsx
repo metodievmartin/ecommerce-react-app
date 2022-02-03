@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux';
 import './cart-icon.styles.scss';
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 import { toggleCartDropdown } from '../../+store/cart/cart.actions';
-import { getCartItemsQuantity } from '../../+store/cart/cart.selectors';
+import { selectCartItemsQuantity } from '../../+store/cart/cart.selectors';
 
 const CartIcon = () => {
   const [animate, setAnimate] = useState(false);
   const isMounting = useRef(true);
   const dispatch = useDispatch();
-  const quantity = useSelector(getCartItemsQuantity);
+  const quantity = useSelector(selectCartItemsQuantity);
 
   useEffect(() => {
     if (isMounting.current) {

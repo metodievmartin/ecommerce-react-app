@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux';
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { authSignOut } from '../../firebase/firebase.auth';
-import { getCurrentUser } from '../../+store/user/user.selectors';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
-import { getCartDropdownIsHidden } from '../../+store/cart/cart.selectors';
+import { selectCurrentUser } from '../../+store/user/user.selectors';
+import { selectCartDropdownIsHidden } from '../../+store/cart/cart.selectors';
 
 const Header = () => {
-  const currentUser = useSelector(getCurrentUser);
-  const isDropDownHidden = useSelector(getCartDropdownIsHidden);
+  const currentUser = useSelector(selectCurrentUser);
+  const isDropDownHidden = useSelector(selectCartDropdownIsHidden);
 
   return (
     <div className="header">
