@@ -7,6 +7,7 @@ import Header from './components/header/header.component';
 import ShopPage from './pages/shop/shop.component';
 import HomePage from './pages/homepage/homepage.component';
 import AuthPage from './pages/auth-page/auth-page.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 import { onMyAuthStateChanged } from './firebase/firebase.auth';
 import { createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './+store/user/user.actions';
@@ -43,6 +44,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/shop" component={ShopPage} />
+        <Route exact path="/checkout" component={CheckoutPage} />
         <Route exact path="/signin" component={AuthPage} />
       </Switch>
     </div>

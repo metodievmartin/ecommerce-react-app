@@ -7,3 +7,9 @@ export const selectCartItemsQuantity = state =>
     (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
     0
   );
+
+export const selectCartTotal = state =>
+  state.cart.cartItems.reduce(
+    (accumulatedTotal, cartItem) => accumulatedTotal + cartItem.quantity * cartItem.price,
+    0
+  );
